@@ -1,44 +1,54 @@
 
-//criando uma struct sem nome
- struct{
-     int meuNum;
-     string meuString;
-}minhaStrutura,meuCarro1,meuCarro2;//objetos da struct
+cout<<"\t----- Struct -----\n";
 
-//declarando meu obj "minhastrutura" pegando os atributos da struct
+//criando uma struct.
+ struct{
+     int meuNum;//membros da struct  (int variable).
+     string meuString;//membros (string variable).
+}minhaStrutura,meuCarro1,meuCarro2;//multiplas variaveis de estrutura.
+
+//Para acessar membros de uma estrutura, use a sintaxe de ponto ( .):
 minhaStrutura.meuNum = 12;
 minhaStrutura.meuString = "Ola Mundo!";
-cout<<"Criando uma struct:"<<endl;
-cout<<"Meu Numero : "<<minhaStrutura.meuNum<<"\n";
-cout<<"Minha Estrutura : "<<minhaStrutura.meuString<<"\n";
 
-//declarndo outro obj "meuCarro1" pegando os atributos para serem declarados.
+//Atribua dados aos membros de uma estrutura e imprima-os:
+cout<<"Criando uma struct e atribuindo valores.\n"<<endl;
+cout<<"imprimindo meu Numero atribuido: "<<minhaStrutura.meuNum<<endl;
+cout<<"imprimindo minha string atribuida: "<<minhaStrutura.meuString<<endl;
+
+//atribuindo valores a variavel de estrutura "meuCarro1" acessando os membros.
 meuCarro1.meuNum = 1999;
 meuCarro1.meuString = "Ferrari";
 
-//declarndo outro obj "meuCarro2" pegando os atributos para serem declarados.
+//atribuindo valores a variavel de estrutura "meuCarro1" acessando os membros.
 meuCarro2.meuNum = 1998;
 meuCarro2.meuString = "Corsa";
 
 
-cout <<"\nUtilizando a Estrutura Carro1 :"<<meuCarro1.meuNum << " " <<meuCarro1.meuString<<"\n";
-cout <<"Utilizando a Estrutura Carro1 :"<<meuCarro2.meuNum<< " " <<meuCarro2.meuString<<"\n";
+cout <<"\nUtilizando a variavel de Estrutura 'meuCarro1': "<<meuCarro1.meuNum << " " <<meuCarro1.meuString<<"\n";
+cout <<"Utilizando a variavel de Estrutura 'meuCarro2': "<<meuCarro2.meuNum<< " " <<meuCarro2.meuString<<"\n";
 
-cout<<"---------\n";
+cout<<"\t---------"<<endl;
 cout<<"Criando outra struct:"<<endl;
 
-struct carro{
+struct carro{ //essa struct esta nomeada como "carro"
+
     string marca;
     string modelo;
     int ano;
 };
 
+//Para declarar uma variável que utiliza a estrutura,
+//use o nome da estrutura como o tipo de dados da variável.
 carro meucar1;
+
+//atribuindo valores a variavelde estrutura meuCar2 e acessando os membros.
 meucar1.marca = "BMW";
 meucar1.modelo = "X1";
 meucar1.ano = 2011;
 
 carro meucar2;
+//atribuindo valores a variavelde estrutura meuCar2 e acessando os membros.
 meucar2.marca = "Fiat";
 meucar2.modelo = "Uno";
 meucar2.ano = 2002;
