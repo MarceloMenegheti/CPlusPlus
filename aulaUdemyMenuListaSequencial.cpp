@@ -79,6 +79,35 @@ void addFimSequencial(string nome, int rg, int *tamanhoDaLista, pessoa *&ponteir
     //aumenta o tamanho da lista
     *tamanhoDaLista = *tamanhoDaLista + 1;
 }
+
+addPosicaoSequencial(string nome, int rg,int *tamanhoDaLista,pessoa *&ponteiroSequencial, int posicao){
+
+    //criar uma lista com um tamanho maior
+    pessoa *novaListaSequencial = new pessoa[*tamanhoDaLista + 1];
+
+    //passa os elementos do vetor antigo para o novo
+    for(int i = 0; i < posicao; i++){
+        novaListaSequencial[i].nome = ponteiroSequencial[i].nome;
+        novaListaSequencial[i].rg = ponteiroSequencial[i].rg;
+    }
+
+    //add o novo registro na posicao correta
+    novaListaSequencial[posicao].nome = nome;
+    novaListaSequencial[posicao].rg = rg;
+
+    //passa os elementos do vetor antigo para o novo
+    for(int i = posicao + 1; i < *tamanhoDaLista + 1; i++){
+        novaListaSequencial[i].nome = ponteiroSequencial[i - 1].nome;
+        novaListaSequencial[i].rg = ponteiroSequencial[i - 1].rg;
+    }
+
+    //atualiza o ponteiro para a lista nova
+    ponteiroSequencial = novaListaSequencial;
+
+    //aumenta o tamanho da lista
+    *tamanhoDaLista = *tamanhoDaLista + 1;
+}
+
 int main(){
 
     //variaveis
@@ -128,7 +157,7 @@ int main(){
 
         //variaveis usadas nas operacoes
         string nome;
-        int rg;
+        int rg,posicao;
 
         //chamando a funcao desejada
         switch(funcaoDesejada){
@@ -154,12 +183,33 @@ int main(){
                 if(tamanhoDaLista == 0){
                      addComecoSequencial(nome,rg, &tamanhoDaLista,ponteiroSequecial);
                 }else{
+                    //adiciona no fim da lista
                     addFimSequencial(nome,rg, &tamanhoDaLista,ponteiroSequecial);
                 }
 
                 break;
             case 3:
-                cout<<"Funcao escolhida: 3"<<endl;
+                cout<<"Funcao escolhida: 3 - insercao de um node na posicao"<<endl;
+
+                cout<<"Digite uma posicao: ";
+                cin>>posicao;
+
+                cout<<"Digite o nome: ";
+                cin>>nome;
+
+                cout<<"Digite o rg: ";
+                cin>>rg;
+
+                if(posicao == 0){
+                     //se estiver add no comeco
+                     addComecoSequencial(nome,rg, &tamanhoDaLista,ponteiroSequecial);
+                }else if(posicao == tamanhoDaLista){
+                    //adiciona no fim da lista
+                    addFimSequencial(nome,rg, &tamanhoDaLista,ponteiroSequecial);
+                }else{
+                    //adiciona uma posicao especifica
+                    addPosicaoSequencial(nome,rg, &tamanhoDaLista,ponteiroSequecial,posicao);
+                }
                 break;
             case 4:
                 cout<<"Funcao escolhida: 4"<<endl;
