@@ -58,6 +58,27 @@ void addComecoSequencial(string nome, int rg, int *tamanhoDaLista, pessoa *&pont
     *tamanhoDaLista = *tamanhoDaLista + 1;
 }
 
+void addFimSequencial(string nome, int rg, int *tamanhoDaLista, pessoa *&ponteiroSequencial){
+
+    //criar uma lista com um tamanho maior
+    pessoa *novaListaSequencial = new pessoa[*tamanhoDaLista + 1];
+
+    //passa os elementos do vetor antigo para o novo
+    for(int i = 0; i < *tamanhoDaLista; i++){
+        novaListaSequencial[i].nome = ponteiroSequencial[i].nome;
+        novaListaSequencial[i].rg = ponteiroSequencial[i].rg;
+    }
+
+    //Posiciona o ultimo elemento
+    novaListaSequencial[*tamanhoDaLista].nome = nome;
+    novaListaSequencial[*tamanhoDaLista].rg = rg;
+
+    //atualiza o ponteiro para a lista nova
+    ponteiroSequencial = novaListaSequencial;
+
+    //aumenta o tamanho da lista
+    *tamanhoDaLista = *tamanhoDaLista + 1;
+}
 int main(){
 
     //variaveis
@@ -122,7 +143,20 @@ int main(){
                 addComecoSequencial(nome,rg, &tamanhoDaLista,ponteiroSequecial);
                 break;
             case 2:
-                cout<<"Funcao escolhida: 2"<<endl;
+                cout<<"Funcao escolhida: 2 - insercao de um node no fim da lista"<<endl;
+                cout<<"Digite o nome: ";
+                cin>>nome;
+
+                cout<<"Digite o rg: ";
+                cin>>rg;
+
+                //se a lista for vazia. usamos a funcao de criar no inicio
+                if(tamanhoDaLista == 0){
+                     addComecoSequencial(nome,rg, &tamanhoDaLista,ponteiroSequecial);
+                }else{
+                    addFimSequencial(nome,rg, &tamanhoDaLista,ponteiroSequecial);
+                }
+
                 break;
             case 3:
                 cout<<"Funcao escolhida: 3"<<endl;
