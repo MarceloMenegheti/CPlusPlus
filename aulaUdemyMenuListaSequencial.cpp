@@ -210,10 +210,7 @@ int main(){
 
 
     //mostrando o menu
-    while(funcaoDesejada < 10 && funcaoDesejada > 0){
-
-        //imprimi a lista completa
-        imprimirSequencial(ponteiroSequecial, tamanhoDaLista);
+    while(funcaoDesejada < 9 && funcaoDesejada > 0){
 
         cout<<" Operacoes"<<endl;
         cout<<"1 - insercao de um node no inicio da lista"<<endl;
@@ -342,10 +339,13 @@ int main(){
                     cout<<"\nNome do RG "<<rg<<": "<< retornaNomeSequencial(&tamanhoDaLista, ponteiroSequecial, rg)<<endl;
                 }
 
-
                 break;
             case 8:
-                cout<<"Funcao escolhida: 8"<<endl;
+                cout<<"Funcao escolhida: 8 - imprimir a lista. "<<endl;
+
+                //imprimi a lista completa
+                imprimirSequencial(ponteiroSequecial, tamanhoDaLista);
+
                 break;
             case 9:
                 cout<<"Funcao escolhida: 9"<<endl;
