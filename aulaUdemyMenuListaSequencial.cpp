@@ -127,6 +127,25 @@ void removeInicioSequencial(int *tamanhoDaLista,pessoa *&ponteiroSequencial){
 
 }
 
+void removeFimSequencial(int *tamanhoDaLista,pessoa *&ponteiroSequencial){
+
+    //cria um vetor com uma posicao a menos
+    pessoa *novaListaSequencial = new pessoa[*tamanhoDaLista - 1];
+
+    //passa os elementos do vetor antigo para o novo menos o ultimo
+    for(int i = 0 ; i < *tamanhoDaLista - 1; i++){
+        novaListaSequencial[i].nome = ponteiroSequencial[i].nome;
+        novaListaSequencial[i].rg = ponteiroSequencial[i].rg;
+    }
+
+    //atualiza o ponteiro para a lista nova
+    ponteiroSequencial = novaListaSequencial;
+
+    //reduz o tamanho da lista
+    *tamanhoDaLista = *tamanhoDaLista - 1;
+
+}
+
 int main(){
 
     //variaveis
@@ -241,7 +260,15 @@ int main(){
                 }
                 break;
             case 5:
-                cout<<"Funcao escolhida: 5"<<endl;
+                cout<<"Funcao escolhida: - retirar um node no fim da lista"<<endl;
+
+                //se a lista for vazia
+                if(tamanhoDaLista == 0){
+                    cout<<" - Lista Vazia!"<<endl;
+                }else{
+                    removeFimSequencial(&tamanhoDaLista, ponteiroSequecial);
+                }
+
                 break;
             case 6:
                 cout<<"Funcao escolhida: 6"<<endl;
