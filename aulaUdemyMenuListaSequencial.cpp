@@ -146,6 +146,29 @@ void removeFimSequencial(int *tamanhoDaLista,pessoa *&ponteiroSequencial){
 
 }
 
+void removePosicaoSequencial(int *tamanhoDaLista,pessoa *&ponteiroSequencial, int posicao){
+
+    //cria um vetor com uma posicao a menos
+    pessoa *novaListaSequencial = new pessoa[*tamanhoDaLista - 1];
+
+    //passa os valores de acordo com o index
+    for(int i = 0 ; i < *tamanhoDaLista - 1; i++){
+            //se estiver antes da posicao
+            if(i < posicao){
+                novaListaSequencial[i].nome = ponteiroSequencial[i].nome;
+                novaListaSequencial[i].rg = ponteiroSequencial[i].rg;
+            }else{
+                novaListaSequencial[i].nome = ponteiroSequencial[i + 1].nome;
+                novaListaSequencial[i].rg = ponteiroSequencial[i + 1].rg;
+            }
+    }
+
+    //atualiza o ponteiro para a lista nova
+    ponteiroSequencial = novaListaSequencial;
+
+    //reduz o tamanho da lista
+    *tamanhoDaLista = *tamanhoDaLista - 1;
+}
 int main(){
 
     //variaveis
@@ -271,7 +294,24 @@ int main(){
 
                 break;
             case 6:
-                cout<<"Funcao escolhida: 6"<<endl;
+                cout<<"Funcao escolhida: 6 - retirar um node na posicao"<<endl;
+
+                //se a lista for vazia
+                if(tamanhoDaLista == 0){
+                    cout<<" - Lista Vazia!"<<endl;
+                }else{
+
+                    cout<<"Digite uma posicao: ";
+                    cin>>posicao;
+
+                    if(posicao == 0){
+                        removeInicioSequencial(&tamanhoDaLista, ponteiroSequecial);
+                    }else if(posicao == tamanhoDaLista - 1){
+                        removeFimSequencial(&tamanhoDaLista, ponteiroSequecial);
+                    }else{
+                        removePosicaoSequencial(&tamanhoDaLista, ponteiroSequecial, posicao);
+                    }
+                }
                 break;
             case 7:
                 cout<<"Funcao escolhida: 7"<<endl;
