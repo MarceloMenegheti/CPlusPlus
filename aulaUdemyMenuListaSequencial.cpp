@@ -108,6 +108,25 @@ addPosicaoSequencial(string nome, int rg,int *tamanhoDaLista,pessoa *&ponteiroSe
     *tamanhoDaLista = *tamanhoDaLista + 1;
 }
 
+void removeInicioSequencial(int *tamanhoDaLista,pessoa *&ponteiroSequencial){
+
+    //cria um vetor com uma posicao a menos
+    pessoa *novaListaSequencial = new pessoa[*tamanhoDaLista - 1];
+
+    //passa os elementos do vetor antigo para o novo
+    for(int i = 1 ; i < *tamanhoDaLista; i++){
+        novaListaSequencial[i - 1].nome = ponteiroSequencial[i].nome;
+        novaListaSequencial[i - 1].rg = ponteiroSequencial[i].rg;
+    }
+
+    //atualiza o ponteiro para a lista nova
+    ponteiroSequencial = novaListaSequencial;
+
+    //reduz o tamanho da lista
+    *tamanhoDaLista = *tamanhoDaLista - 1;
+
+}
+
 int main(){
 
     //variaveis
@@ -212,7 +231,14 @@ int main(){
                 }
                 break;
             case 4:
-                cout<<"Funcao escolhida: 4"<<endl;
+                cout<<"Funcao escolhida: 4 - retirar um node no inicio da lista"<<endl;
+
+                //se a lista for vazia
+                if(tamanhoDaLista == 0){
+                    cout<<" - Lista Vazia!"<<endl;
+                }else{
+                    removeInicioSequencial(&tamanhoDaLista, ponteiroSequecial);
+                }
                 break;
             case 5:
                 cout<<"Funcao escolhida: 5"<<endl;
