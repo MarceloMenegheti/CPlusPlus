@@ -136,6 +136,26 @@ void addPosicaoEncadeada(string nome, int rg, pessoa *&ponteiroEncadeado, int po
         }
 }
 
+void removeInicioEncadeada(pessoa *&ponteiroEncadeado){
+
+    if(ponteiroEncadeado->proximo == NULL){
+
+        //Cria um nova Estrutura/registro
+        pessoa *novoValor = new pessoa;
+        novoValor->nome = "";
+        novoValor->rg = 0;
+        novoValor->proximo = NULL;
+
+        ponteiroEncadeado = novoValor;
+
+    }else{
+
+        //faz o ponteiro principal apontar para o proximo valor
+        ponteiroEncadeado = ponteiroEncadeado->proximo;
+
+    }
+}
+
 int main(){
 
     //variaveis
@@ -205,6 +225,7 @@ int main(){
 
         //chamando a funcao desejada
         switch(funcaoDesejada){
+
             case 1:
                 cout<<"Funcao escolhida: 1 - insercao de um node no inicio da lista"<<endl;
                 cout<<"Digite o nome: ";
@@ -216,6 +237,7 @@ int main(){
                 addComecoEncadeada(nome,rg, ponteiroEncadeado);
 
                 break;
+
             case 2:
                 cout<<"Funcao escolhida: 2 - insercao de um node no fim da lista"<<endl;
                 cout<<"Digite o nome: ";
@@ -232,6 +254,7 @@ int main(){
                     addFimEncadeada(nome,rg, ponteiroEncadeado);
                 }
                 break;
+
             case 3:
                 cout<<"Funcao escolhida: 3 - insercao de um node na posicao"<<endl;
 
@@ -255,6 +278,17 @@ int main(){
                 }else{
                     //adiciona uma posicao especifica
                     addPosicaoEncadeada(nome,rg, ponteiroEncadeado, posicao);
+                }
+                break;
+
+            case 4:
+                cout<<"Funcao escolhida: 4 - retirar um node no inicio da lista"<<endl;
+
+                //se a lista for vazia
+                if(retornaTamanho(ponteiroEncadeado) == 0){
+                    cout<<" - Lista Vazia!"<<endl;
+                }else{
+                    removeInicioEncadeada(ponteiroEncadeado);
                 }
                 break;
         }
