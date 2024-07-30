@@ -179,6 +179,36 @@ void removeFimEncadeada(pessoa *&ponteiroEncadeado){
 
 }
 
+void removePosicaoEncadeada(pessoa *&ponteiroEncadeado, int posicao){
+
+    //ponteir cursor auxliar
+    pessoa *p = ponteiroEncadeado;
+
+    //contador de posicao
+    int cont = 0;
+
+    while(cont <= posicao){
+        if(cont == posicao){
+
+            pessoa *aux = new pessoa;
+
+            //recebe o elemento que sera eliminado
+            aux = p->proximo;
+
+            //Faz com que o proximo pule um elemento
+            p->proximo = aux->proximo;
+
+            free(aux);
+        }
+
+        //Passa o cursor para o proximo elemento
+        p = p->proximo;
+
+        //Registra uma movimentacao
+        cont++;
+    }
+
+}
 
 int main(){
 
@@ -325,6 +355,26 @@ int main(){
                     removeFimEncadeada(ponteiroEncadeado);
                 }
 
+                break;
+            case 6:
+                cout<<"Funcao escolhida: 6 - retirar um node na posicao"<<endl;
+
+                //se a lista for vazia
+                if(retornaTamanho(ponteiroEncadeado) == 0){
+                    cout<<" - Lista Vazia!"<<endl;
+                }else{
+
+                    cout<<"Digite uma posicao: ";
+                    cin>>posicao;
+
+                    if(posicao == 0){
+                        removeInicioEncadeada(ponteiroEncadeado);
+                    }else if(posicao == retornaTamanho(ponteiroEncadeado) - 1){
+                        removeFimEncadeada(ponteiroEncadeado);
+                    }else{
+                        removePosicaoEncadeada(ponteiroEncadeado, posicao);
+                    }
+                }
                 break;
         }
     }
