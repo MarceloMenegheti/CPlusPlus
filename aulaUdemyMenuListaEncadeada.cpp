@@ -56,7 +56,7 @@ void imprimirEncadeado(pessoa *ponteiroEncadeado){
     }
 }
 
-void addComecoEncadeado(string nome, int rg, pessoa *&ponteiroEncadeado){
+void addComecoEncadeada(string nome, int rg, pessoa *&ponteiroEncadeado){
 
         //Cria um nova estrutura
         pessoa *novoValor = new pessoa;
@@ -75,7 +75,7 @@ void addComecoEncadeado(string nome, int rg, pessoa *&ponteiroEncadeado){
 
 }
 
-void addFimEncadeado(string nome, int rg, pessoa *&ponteiroEncadeado){
+void addFimEncadeada(string nome, int rg, pessoa *&ponteiroEncadeado){
 
         //Cria um nova estrutura
         pessoa *novoValor = new pessoa;
@@ -96,6 +96,44 @@ void addFimEncadeado(string nome, int rg, pessoa *&ponteiroEncadeado){
             p = p->proximo;
     }
 
+}
+
+void addPosicaoEncadeada(string nome, int rg, pessoa *&ponteiroEncadeado, int posicao){
+
+        //Cria um nova registro
+        pessoa *novoValor = new pessoa;
+        novoValor->nome = nome;
+        novoValor->rg = rg;
+        novoValor->proximo = NULL;
+
+        pessoa *p = ponteiroEncadeado;
+
+        int i = 0;
+
+        while(i <= posicao){
+
+            //quando chega um antes da posicao desejada
+            if(i == posicao - 1){
+                //auxiliar do valor
+                pessoa *aux = new pessoa;
+
+                //armazena o proximo valor
+                aux->proximo = p->proximo;
+
+                //coloca o novo valor proximo dele
+                p->proximo = novoValor;
+
+                //Faz com que o novo valor aponte para o proximo
+                novoValor->proximo = aux->proximo;
+
+                free(aux);
+            }
+
+            //atualiza o cursor
+            p = p->proximo;
+
+            i++;
+        }
 }
 
 int main(){
@@ -175,7 +213,7 @@ int main(){
                 cout<<"Digite o rg: ";
                 cin>>rg;
 
-                addComecoEncadeado(nome,rg, ponteiroEncadeado);
+                addComecoEncadeada(nome,rg, ponteiroEncadeado);
 
                 break;
             case 2:
@@ -188,10 +226,35 @@ int main(){
 
                 //se a lista for vazia. usamos a funcao de criar no inicio
                 if(retornaTamanho(ponteiroEncadeado) == 0){
-                     addComecoEncadeado(nome,rg,ponteiroEncadeado);
+                     addComecoEncadeada(nome,rg,ponteiroEncadeado);
                 }else{
                     //adiciona no fim da lista
-                    addFimEncadeado(nome,rg, ponteiroEncadeado);
+                    addFimEncadeada(nome,rg, ponteiroEncadeado);
+                }
+                break;
+            case 3:
+                cout<<"Funcao escolhida: 3 - insercao de um node na posicao"<<endl;
+
+                cout<<"Digite uma posicao: ";
+                cin>>posicao;
+
+                cout<<"Digite o nome: ";
+                cin>>nome;
+
+                cout<<"Digite o rg: ";
+                cin>>rg;
+
+                if(posicao == 0){
+                     //se estiver add no comeco
+                     addComecoEncadeada(nome,rg, ponteiroEncadeado);
+
+                }else if(posicao == retornaTamanho(ponteiroEncadeado) - 1){
+                    //adiciona no fim da lista
+                    addFimEncadeada(nome,rg, ponteiroEncadeado);
+
+                }else{
+                    //adiciona uma posicao especifica
+                    addPosicaoEncadeada(nome,rg, ponteiroEncadeado, posicao);
                 }
                 break;
         }
