@@ -156,6 +156,30 @@ void removeInicioEncadeada(pessoa *&ponteiroEncadeado){
     }
 }
 
+void removeFimEncadeada(pessoa *&ponteiroEncadeado){
+
+    pessoa *p = new pessoa;
+    pessoa *aux = new pessoa;
+
+    //Ponteiro cursor auxiliar
+    p = ponteiroEncadeado;
+
+    //passa pela lista
+    while(p->proximo != NULL){
+
+        //auxiliar sempre fica sendo um antes do cursor
+        aux = p;
+
+        //Passa o cursor para o proximo elemento
+        p = p->proximo;
+    }
+
+    //muda o final da lista para o penultimo elemento
+    aux->proximo = NULL;
+
+}
+
+
 int main(){
 
     //variaveis
@@ -290,6 +314,17 @@ int main(){
                 }else{
                     removeInicioEncadeada(ponteiroEncadeado);
                 }
+                break;
+            case 5:
+                cout<<"Funcao escolhida: - retirar um node no fim da lista"<<endl;
+
+                //se a lista for vazia
+                if(retornaTamanho(ponteiroEncadeado) == 1){
+                        removeInicioEncadeada(ponteiroEncadeado);
+                }else{
+                    removeFimEncadeada(ponteiroEncadeado);
+                }
+
                 break;
         }
     }
