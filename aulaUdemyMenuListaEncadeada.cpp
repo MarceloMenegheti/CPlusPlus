@@ -16,24 +16,29 @@ void limpaTela(){
     system("CLS");
 }
 
+//Conta quantos elementos tem na lista
 int retornaTamanho(pessoa *ponteiroEncadeado){
 
-    //tamanho da lista
-    int tamanho = 0;
+   if(ponteiroEncadeado->nome == ""){
+        return 0;
+   }
 
-    //Ponteiro cursor auxiliar
-    pessoa *p = ponteiroEncadeado;
+   //Tamanho da lista
+   int tamanho = 0;
 
-    while(p != NULL){
+   //Ponteiro auxiliar para percorrer a lista
+   pessoa *p = ponteiroEncadeado;
 
-        //atualiza o cursor
+   while(p != NULL){
+
+       //Transforma o P no endereco do proximo valor, Caso o endereco seja NULL, estamos no fim da lista
         p = p->proximo;
 
-        //contador de tamanho aumenta
+        //Contador de tamanho da lista
         tamanho++;
-    }
-    return tamanho;
+   }
 
+   return tamanho;
 }
 
 void imprimirEncadeado(pessoa *ponteiroEncadeado){
@@ -52,6 +57,25 @@ void imprimirEncadeado(pessoa *ponteiroEncadeado){
     }
 }
 
+void addComecoEncadeado(string nome, int rg, pessoa *&ponteiroEncadeado){
+
+
+        //Cria um nova estrutura
+        pessoa *novoValor = new pessoa;
+        novoValor->nome = nome;
+        novoValor->rg = rg;
+
+        //verifica se a lista esta vazia
+        if(ponteiroEncadeado->nome == ""){
+            novoValor->proximo = NULL;
+        }else{
+            novoValor->proximo = ponteiroEncadeado;
+        }
+
+        //redireciona o ponteiro
+        ponteiroEncadeado = novoValor;
+
+}
 
 int main(){
 
@@ -59,9 +83,10 @@ int main(){
     int funcaoDesejada = 1;
 
     //ponteiro para lista encadeada
-    pessoa *ponteiroEncadeado;
+    pessoa *ponteiroEncadeado = new pessoa;
 
-    //cria o primeiro valor
+/*
+    // cria o primeiro valor
     pessoa *novoPrimeiroValor = new pessoa;
     novoPrimeiroValor->nome = "Marcelo";
     novoPrimeiroValor->rg = 666;
@@ -76,9 +101,11 @@ int main(){
     novoSegundoValor->rg = 111;
     novoSegundoValor->proximo = NULL;
 
+
     //Encadeamento de valores
     novoPrimeiroValor->proximo = novoSegundoValor;
 
+*/
 
     while(funcaoDesejada < 9 && funcaoDesejada > 0){
 
@@ -97,7 +124,12 @@ int main(){
 
         cout<<"\nTamanho Atual: "<<retornaTamanho(ponteiroEncadeado)<<endl;
 
-        imprimirEncadeado(ponteiroEncadeado);
+        //imprimi a lista
+        if(retornaTamanho(ponteiroEncadeado) == 0){
+            cout<<"\nLista Vazia!"<<endl;
+        }else{
+            imprimirEncadeado(ponteiroEncadeado);
+        }
 
         cout<<"\nEscolha um numero e pressione ENTER: ";
 
@@ -112,7 +144,15 @@ int main(){
         //chamando a funcao desejada
         switch(funcaoDesejada){
             case 1:
-                cout<<""<<endl;
+                cout<<"Funcao escolhida: 1 - insercao de um node no inicio da lista"<<endl;
+                cout<<"Digite o nome: ";
+                cin>>nome;
+
+                cout<<"Digite o rg: ";
+                cin>>rg;
+
+                addComecoEncadeado(nome,rg, ponteiroEncadeado);
+
                 break;
             case 2:
                 cout<<"!"<<endl;
