@@ -210,6 +210,34 @@ void removePosicaoEncadeada(pessoa *&ponteiroEncadeado, int posicao){
 
 }
 
+string retornaNomeEncadeada(pessoa *&ponteiroEncadeado, int rg){
+
+    //nome a ser retornado
+    string nome = "Nao encontrado";
+
+    //Ponteiro cursor auxiliar
+    pessoa *p = ponteiroEncadeado;
+
+    //passa pela lista
+    while(p != NULL){
+
+        if(p->rg == rg){
+
+            //recebe o nome do rg encontrado
+            nome = p->nome;
+
+            return nome;
+        }
+
+        //Passa o cursor para o proximo elemento
+        p = p->proximo;
+    }
+
+    return nome;
+
+}
+
+
 int main(){
 
     //variaveis
@@ -375,6 +403,22 @@ int main(){
                         removePosicaoEncadeada(ponteiroEncadeado, posicao);
                     }
                 }
+                break;
+
+            case 7:
+                cout<<"Funcao escolhida: 7 - procurar um node com o campo RG"<<endl;
+
+                //se a lista for vazia
+                if(retornaTamanho(ponteiroEncadeado) == 0){
+                    cout<<" - Lista Vazia!"<<endl;
+                }else{
+
+                    cout<<"Digite um RG: ";
+                    cin>>rg;
+
+                    cout<<"\nNome do RG "<<rg<<": "<< retornaNomeEncadeada(ponteiroEncadeado, rg)<<endl;
+                }
+
                 break;
         }
     }
