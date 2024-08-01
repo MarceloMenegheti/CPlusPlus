@@ -13,7 +13,7 @@ system("CLS");
 string retornaPalavraAleatoria(){
 
     //Vetor com palavras disponíveis
-    string palavras[4] = {"Abacaxi","Manga","Morango","Jabuticaba"};
+    string palavras[4] = {"abacaxi","manga","morango","jabuticaba"};
 
     //Indice gerado no intervalo {0,1,2,3}
     int indiceAleatorio = rand() % 4;
@@ -56,10 +56,11 @@ void jogarSozinho(){
     //palavra mascarada
     string palavraComMascara = retornaPalavraComMascara(palavra,tamanhoDaPalavra);
 
-    int tentativas =0,maxTentativas = 5;
-    char letra;
+    ///Variaveis Gerais
+    int tentativas =0,maxTentativas = 6;        //Numero de tentativas
+    char letra;                                 //Letra digitada pelo usuario
 
-    while(maxTentativas - tentativas > 0){
+    while(palavra != palavraComMascara && maxTentativas - tentativas > 0){
 
         limpaTela();
 
@@ -70,12 +71,27 @@ void jogarSozinho(){
         cout<<"Digite uma letra: ";
         cin>>letra;
 
+        //percorre a palavra real
+        for(int i = 0; i < tamanhoDaPalavra; i++){
+
+            //se a letra exitir  na palavra escondida
+            if(palavra[i] == letra){
+
+                //faco aquela letra aparecer na palavraComMascara
+                palavraComMascara[i] = palavra[i];
+            }
+        }
+
         //aumenta uma tentativa realizada
         tentativas++;
     }
-
-
-
+    if(palavra == palavraComMascara){
+        limpaTela();
+        cout<<"YOU WIN!"<<endl;
+    }else{
+        limpaTela();
+        cout<<"YOU LOOSE!"<<endl;
+    }
 
 }
 
