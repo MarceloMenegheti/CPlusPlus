@@ -38,6 +38,13 @@ string retornaPalavraComMascara(string palavra, int tamanhoDaPalavra){
     return palavraComMascara;
 }
 
+void exibeStatus(string palavraComMascara, int tamanhoDaPalavra, int tentativasRestantes){
+
+    //cout<<"A palavra secreta eh "<<palavra<<", tamanho da palavra: "<<tamanhoDaPalavra<<endl;
+    cout<<"Palavra: "<<palavraComMascara<<" (tamanho: "<<tamanhoDaPalavra<<")"<<endl;
+    cout<<"\nTentativas Restantes: "<<tentativasRestantes<<endl;
+}
+
 void jogarSozinho(){
 
     //palavra a ser adivinhada
@@ -49,8 +56,27 @@ void jogarSozinho(){
     //palavra mascarada
     string palavraComMascara = retornaPalavraComMascara(palavra,tamanhoDaPalavra);
 
-    cout<<"A palavra secreta eh "<<palavra<<", tamanho da palavra: "<<tamanhoDaPalavra<<endl;
-    cout<<"\nMascara: "<<palavraComMascara;
+    int tentativas =0,maxTentativas = 5;
+    char letra;
+
+    while(maxTentativas - tentativas > 0){
+
+        limpaTela();
+
+        //exibe o Status Atual do jogo
+        exibeStatus(palavraComMascara, tamanhoDaPalavra, maxTentativas - tentativas);
+
+        //de um palpite
+        cout<<"Digite uma letra: ";
+        cin>>letra;
+
+        //aumenta uma tentativa realizada
+        tentativas++;
+    }
+
+
+
+
 }
 
 void menuInicial(){
