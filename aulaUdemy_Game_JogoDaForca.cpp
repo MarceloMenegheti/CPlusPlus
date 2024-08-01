@@ -38,11 +38,18 @@ string retornaPalavraComMascara(string palavra, int tamanhoDaPalavra){
     return palavraComMascara;
 }
 
-void exibeStatus(string palavraComMascara, int tamanhoDaPalavra, int tentativasRestantes){
+void exibeStatus(string palavraComMascara, int tamanhoDaPalavra, int tentativasRestantes, string letrasJaArriscadas){
 
     //cout<<"A palavra secreta eh "<<palavra<<", tamanho da palavra: "<<tamanhoDaPalavra<<endl;
     cout<<"Palavra: "<<palavraComMascara<<" (tamanho: "<<tamanhoDaPalavra<<")"<<endl;
     cout<<"\nTentativas Restantes: "<<tentativasRestantes<<endl;
+
+    cout<<"Letras Arriscadas: ";
+
+    for(int i = 0; i < letrasJaArriscadas.size(); i++){
+        cout<<letrasJaArriscadas[i]<<", ";
+    }
+
 }
 
 void jogarSozinho(){
@@ -59,32 +66,53 @@ void jogarSozinho(){
     ///Variaveis Gerais
     int tentativas =0,maxTentativas = 6;        //Numero de tentativas
     char letra;                                 //Letra digitada pelo usuario
+    string letrasJaArriscadas;                  //acumula as tentativas do jogador
+    bool jaDigitouLetra;
 
     while(palavra != palavraComMascara && maxTentativas - tentativas > 0){
 
-        limpaTela();
+        //limpaTela();
 
         //exibe o Status Atual do jogo
-        exibeStatus(palavraComMascara, tamanhoDaPalavra, maxTentativas - tentativas);
+        exibeStatus(palavraComMascara, tamanhoDaPalavra, maxTentativas - tentativas, letrasJaArriscadas);
 
         //de um palpite
-        cout<<"Digite uma letra: ";
+        cout<<"\nDigite uma letra: ";
         cin>>letra;
 
-        //percorre a palavra real
-        for(int i = 0; i < tamanhoDaPalavra; i++){
+        //percorre as letras ja digitadas
+        for(int i = 0; i < tentativas; i++){
 
-            //se a letra exitir  na palavra escondida
-            if(palavra[i] == letra){
+            //se encontrar a letra
+            if(letrasJaArriscadas[i] == letra){
 
-                //faco aquela letra aparecer na palavraComMascara
-                palavraComMascara[i] = palavra[i];
+                cout<<"\nEssa letra ja foi digitada\n"<<endl;
+                jaDigitouLetra = true;
             }
         }
 
-        //aumenta uma tentativa realizada
-        tentativas++;
+        //se for uma letra nova
+        if(jaDigitouLetra == false){
+
+            letrasJaArriscadas += letra;
+
+            //percorre a palavra real
+            for(int i = 0; i < tamanhoDaPalavra; i++){
+
+                //se a letra exitir  na palavra escondida
+                if(palavra[i] == letra){
+
+                    //faco aquela letra aparecer na palavraComMascara
+                    palavraComMascara[i] = palavra[i];
+                }
+            }
+
+            //aumenta uma tentativa realizada
+            tentativas++;
+        }
+
     }
+
     if(palavra == palavraComMascara){
         limpaTela();
         cout<<"YOU WIN!"<<endl;
