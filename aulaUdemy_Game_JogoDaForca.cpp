@@ -24,11 +24,33 @@ string retornaPalavraAleatoria(){
     return palavras[indiceAleatorio];
 }
 
+string retornaPalavraComMascara(string palavra, int tamanhoDaPalavra){
+
+    int cont = 0;
+
+    string palavraComMascara;
+
+    //coloca uma mascara
+    while(cont < tamanhoDaPalavra){
+        palavraComMascara += "_";
+        cont++;
+    }
+    return palavraComMascara;
+}
+
 void jogarSozinho(){
 
+    //palavra a ser adivinhada
     string palavra = retornaPalavraAleatoria();
 
-    cout<<"A palavra secreta eh "<<palavra<<endl;
+    //tamanho da palavra
+    int tamanhoDaPalavra = palavra.size();
+
+    //palavra mascarada
+    string palavraComMascara = retornaPalavraComMascara(palavra,tamanhoDaPalavra);
+
+    cout<<"A palavra secreta eh "<<palavra<<", tamanho da palavra: "<<tamanhoDaPalavra<<endl;
+    cout<<"\nMascara: "<<palavraComMascara;
 }
 
 void menuInicial(){
