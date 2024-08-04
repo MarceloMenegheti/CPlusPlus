@@ -38,9 +38,10 @@ string retornaPalavraComMascara(string palavra, int tamanhoDaPalavra){
     return palavraComMascara;
 }
 
-void exibeStatus(string palavraComMascara, int tamanhoDaPalavra, int tentativasRestantes, string letrasJaArriscadas){
+void exibeStatus(string palavraComMascara, int tamanhoDaPalavra, int tentativasRestantes, string letrasJaArriscadas, string mensagem){
 
     //cout<<"A palavra secreta eh "<<palavra<<", tamanho da palavra: "<<tamanhoDaPalavra<<endl;
+    cout<<mensagem<<endl;
     cout<<"Palavra: "<<palavraComMascara<<" (tamanho: "<<tamanhoDaPalavra<<")"<<endl;
     cout<<"\nTentativas Restantes: "<<tentativasRestantes<<endl;
 
@@ -66,15 +67,16 @@ void jogarSozinho(){
     ///Variaveis Gerais
     int tentativas =0,maxTentativas = 6;        //Numero de tentativas
     char letra;                                 //Letra digitada pelo usuario
+    string mensagem = "Bem vindo ao jogo\n";
     string letrasJaArriscadas;                  //acumula as tentativas do jogador
-    bool jaDigitouLetra;
+    bool jaDigitouLetra = false, acertouLetra = false;
 
     while(palavra != palavraComMascara && maxTentativas - tentativas > 0){
 
         //limpaTela();
 
         //exibe o Status Atual do jogo
-        exibeStatus(palavraComMascara, tamanhoDaPalavra, maxTentativas - tentativas, letrasJaArriscadas);
+        exibeStatus(palavraComMascara, tamanhoDaPalavra, maxTentativas - tentativas, letrasJaArriscadas,mensagem);
 
         //de um palpite
         cout<<"\nDigite uma letra: ";
@@ -86,7 +88,7 @@ void jogarSozinho(){
             //se encontrar a letra
             if(letrasJaArriscadas[i] == letra){
 
-                cout<<"\nEssa letra ja foi digitada\n"<<endl;
+                mensagem = "\nEssa letra ja foi digitada\n";
                 jaDigitouLetra = true;
             }
         }
@@ -104,6 +106,8 @@ void jogarSozinho(){
 
                     //faco aquela letra aparecer na palavraComMascara
                     palavraComMascara[i] = palavra[i];
+
+                    mensagem = "\nVoce acertou uma letra";
                 }
             }
 
