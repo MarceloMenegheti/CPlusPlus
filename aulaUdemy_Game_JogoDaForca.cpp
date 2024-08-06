@@ -27,28 +27,28 @@ string retornaPalavraAleatoria(){
 string retornaPalavraComMascara(string palavra, int tamanhoDaPalavra){
 
     int cont = 0;
-
     string palavraComMascara;
 
-    //coloca uma mascara
+    //Coloca uma máscara
     while(cont < tamanhoDaPalavra){
         palavraComMascara += "_";
         cont++;
     }
+
     return palavraComMascara;
 }
 
 void exibeStatus(string palavraComMascara, int tamanhoDaPalavra, int tentativasRestantes, string letrasJaArriscadas, string mensagem){
 
-    //cout<<"A palavra secreta eh "<<palavra<<", tamanho da palavra: "<<tamanhoDaPalavra<<endl;
-    cout<<mensagem<<endl;
-    cout<<"Palavra: "<<palavraComMascara<<" (tamanho: "<<tamanhoDaPalavra<<")"<<endl;
-    cout<<"\nTentativas Restantes: "<<tentativasRestantes<<endl;
+    //cout << "A palavra secreta eh: " << palavra << "(Tamanho:" << tamanhoDaPalavra << ")";
+    cout << mensagem;
+    cout << "\nPalavra:" << palavraComMascara << "(Tamanho:" << tamanhoDaPalavra << ")";
+    cout << "\nTentativas Restantes:" << tentativasRestantes;
 
-    cout<<"Letras Arriscadas: ";
-
+    //Exibe as letras arriscadas
+    cout << "\nLetras arriscadas:";
     for(int i = 0; i < letrasJaArriscadas.size(); i++){
-        cout<<letrasJaArriscadas[i]<<", ";
+        cout << letrasJaArriscadas[i] << ", ";
     }
 
 }
@@ -73,7 +73,7 @@ void jogarSozinho(){
 
     while(palavra != palavraComMascara && maxTentativas - tentativas > 0){
 
-        //limpaTela();
+        limpaTela();
 
         //exibe o Status Atual do jogo
         exibeStatus(palavraComMascara, tamanhoDaPalavra, maxTentativas - tentativas, letrasJaArriscadas,mensagem);
@@ -82,6 +82,7 @@ void jogarSozinho(){
         cout<<"\nDigite uma letra: ";
         cin>>letra;
 
+
         //percorre as letras ja digitadas
         for(int i = 0; i < tentativas; i++){
 
@@ -89,13 +90,17 @@ void jogarSozinho(){
             if(letrasJaArriscadas[i] == letra){
 
                 mensagem = "\nEssa letra ja foi digitada\n";
+
+                //Indica com a variável booleana
                 jaDigitouLetra = true;
+
             }
         }
 
         //se for uma letra nova
         if(jaDigitouLetra == false){
 
+            //Incrementa as letras já arriscadas
             letrasJaArriscadas += letra;
 
             //percorre a palavra real
@@ -107,13 +112,26 @@ void jogarSozinho(){
                     //faco aquela letra aparecer na palavraComMascara
                     palavraComMascara[i] = palavra[i];
 
-                    mensagem = "\nVoce acertou uma letra";
+
+                    acertouLetra = true;
                 }
+            }
+
+            if(!acertouLetra){
+                mensagem = "Voce ERROU";
+
+            }else{
+                mensagem = "\nVoce acertou uma letra";
+
             }
 
             //aumenta uma tentativa realizada
             tentativas++;
         }
+
+        //Reinicia auxiliares
+        jaDigitouLetra = false;
+        acertouLetra = false;
 
     }
 
