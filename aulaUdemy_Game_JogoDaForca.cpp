@@ -64,12 +64,15 @@ void jogarSozinho(){
     //palavra mascarada
     string palavraComMascara = retornaPalavraComMascara(palavra,tamanhoDaPalavra);
 
-    ///Variaveis Gerais
-    int tentativas =0,maxTentativas = 6;        //Numero de tentativas
-    char letra;                                 //Letra digitada pelo usuario
-    string mensagem = "Bem vindo ao jogo\n";
-    string letrasJaArriscadas;                  //acumula as tentativas do jogador
-    bool jaDigitouLetra = false, acertouLetra = false;
+     ///Variáveis Gerais
+    int tentativas = 0, maxTentativas = 10;            //Número de tentativas e erros
+    //int i = 0;                                            //Auxiliar para laços de repetição
+    char letra;                                             //Letra arriscada pelo usuário
+    int opcao;                                              //Opções finais
+    string letrasJaArriscadas;                              //Acumula as tentativas do jogador
+    string mensagem = "Bem vindo ao jogo!";                 //Feedback do jogador
+    string palavraArriscada;                                //Tentativa de arriscar a palavra completa
+    bool jaDigitouLetra = false, acertouLetra = false;      //Auxiliar para saber se a letra já foi digitada
 
     while(palavra != palavraComMascara && maxTentativas - tentativas > 0){
 
@@ -79,9 +82,18 @@ void jogarSozinho(){
         exibeStatus(palavraComMascara, tamanhoDaPalavra, maxTentativas - tentativas, letrasJaArriscadas,mensagem);
 
         //de um palpite
-        cout<<"\nDigite uma letra: ";
+        cout<<"\nDigite uma letra (ou Digite 1 para arriscar a palavra): ";
         cin>>letra;
 
+        //Se digitar 1 deixa o usuário arriscar a palavra inteira
+        if(letra == '1'){
+            cin >> palavraArriscada;
+            if(palavraArriscada == palavra){
+                 palavraComMascara = palavraArriscada;
+            }else{
+                 tentativas = maxTentativas;
+            }
+        }
 
         //percorre as letras ja digitadas
         for(int i = 0; i < tentativas; i++){
