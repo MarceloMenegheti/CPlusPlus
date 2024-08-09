@@ -10,6 +10,46 @@ using namespace std;
 void limpaTela(){
     system("CLS");
 }
+void iniciaTabuleiro(char tabuleiro[10][10]){
+
+    int linha, coluna;
+
+    //popula o tabuleiro com Agua
+    for(linha = 0; linha < 10; linha++){
+        for(coluna = 0; coluna < 10; coluna++){
+            tabuleiro[linha][coluna] = 'A';
+        }
+
+    }
+
+}
+
+void exibeTabuleiro(char tabuleiro[10][10]){
+
+    int linha, coluna;
+
+    //Exibe o tabuleiro
+    for(linha = 0; linha < 10; linha++){
+        for(coluna = 0; coluna < 10; coluna++){
+            cout<<" "<<tabuleiro[linha][coluna];
+        }
+        cout<<endl;
+    }
+}
+
+void jogo(){
+
+    ///Variaveis Gerais
+    char tabuleiro[10][10];
+    int linha, coluna;
+
+    //inicia o tabuleiro
+    iniciaTabuleiro(tabuleiro);
+
+    //exibe o tabuleiro
+    exibeTabuleiro(tabuleiro);
+
+}
 
 void menuInicial(){
 
@@ -33,6 +73,7 @@ void menuInicial(){
         switch(opcao){
             case 1:
                 cout << "Jogo iniciado"<<endl;
+                jogo();
                 //Inicia o jogo
                 /*if(jogar(1) == 1){
                     menuInicial();
