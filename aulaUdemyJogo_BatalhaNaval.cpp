@@ -10,7 +10,7 @@ using namespace std;
 void limpaTela(){
     system("CLS");
 }
-void iniciaTabuleiro(char tabuleiro[10][10]){
+void iniciaTabuleiro(char tabuleiro[10][10],char mascara[10][10]){
 
     int linha, coluna;
 
@@ -18,36 +18,54 @@ void iniciaTabuleiro(char tabuleiro[10][10]){
     for(linha = 0; linha < 10; linha++){
         for(coluna = 0; coluna < 10; coluna++){
             tabuleiro[linha][coluna] = 'A';
+            mascara[linha][coluna] = '#';
         }
 
     }
 
 }
 
-void exibeTabuleiro(char tabuleiro[10][10]){
+void exibeTabuleiro(char tabuleiro[10][10],char mascara[10][10]){
 
     int linha, coluna;
 
     //Exibe o tabuleiro
     for(linha = 0; linha < 10; linha++){
         for(coluna = 0; coluna < 10; coluna++){
-            cout<<" "<<tabuleiro[linha][coluna];
+            //cout<<" "<<tabuleiro[linha][coluna];
+            cout<<" "<<mascara[linha][coluna];
         }
         cout<<endl;
     }
+
 }
 
 void jogo(){
 
     ///Variaveis Gerais
-    char tabuleiro[10][10];
-    int linha, coluna;
+    char tabuleiro[10][10],mascara[10][10];
+    int linha, coluna, linhaJogada, colunaJogada, estadoDeJogo = 1;
 
     //inicia o tabuleiro
-    iniciaTabuleiro(tabuleiro);
+    iniciaTabuleiro(tabuleiro, mascara);
 
-    //exibe o tabuleiro
-    exibeTabuleiro(tabuleiro);
+    while(estadoDeJogo == 1){
+
+        limpaTela();
+
+        //exibe o tabuleiro
+        exibeTabuleiro(tabuleiro,mascara);
+
+        cout<<"Digite uma linha: ";
+        cin>>linhaJogada;
+
+        cout<<"Digite uma coluna: ";
+        cin>>colunaJogada;
+
+        //revela oque esta no tabuleiro
+        mascara[linhaJogada][colunaJogada] = tabuleiro[linhaJogada][colunaJogada];
+
+    }
 
 }
 
