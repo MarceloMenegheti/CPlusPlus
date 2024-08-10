@@ -18,7 +18,7 @@ void iniciaTabuleiro(char tabuleiro[10][10],char mascara[10][10]){
     for(linha = 0; linha < 10; linha++){
         for(coluna = 0; coluna < 10; coluna++){
             tabuleiro[linha][coluna] = 'A';
-            mascara[linha][coluna] = '#';
+            mascara[linha][coluna] = '*';
         }
 
     }
@@ -32,11 +32,50 @@ void exibeTabuleiro(char tabuleiro[10][10],char mascara[10][10]){
     //Exibe o tabuleiro
     for(linha = 0; linha < 10; linha++){
         for(coluna = 0; coluna < 10; coluna++){
-            //cout<<" "<<tabuleiro[linha][coluna];
             cout<<" "<<mascara[linha][coluna];
         }
         cout<<endl;
     }
+    //Exibe o tabuleiro
+    for(linha = 0; linha < 10; linha++){
+        for(coluna = 0; coluna < 10; coluna++){
+            cout<<" "<<tabuleiro[linha][coluna];
+        }
+        cout<<endl;
+    }
+
+}
+
+void posicionaBarcos(char tabuleiro[10][10]){
+
+    int quantidade = 10, quantidadePosicionada = 0;
+
+    while(quantidadePosicionada < quantidade){
+
+        int linhaBarcosAleatoria = rand() % 10;
+        int colunaBarcosAleatoria = rand() % 10;
+
+        if(tabuleiro[linhaBarcosAleatoria][colunaBarcosAleatoria] == 'A'){
+
+            //posiciona 10 barcos aleatoriamente
+            tabuleiro[linhaBarcosAleatoria][colunaBarcosAleatoria] = 'P';
+
+            //aumenta o contador de barcos posicionados
+            quantidadePosicionada++;
+
+        }
+    }
+
+    /*
+    colocando manualmente:
+
+    tabuleiro[0][0] = 'P';
+    tabuleiro[1][1] = 'P';
+    tabuleiro[2][2] = 'P';
+    tabuleiro[3][3] = 'P';
+    tabuleiro[4][4] = 'P';
+
+    */
 
 }
 
@@ -48,6 +87,9 @@ void jogo(){
 
     //inicia o tabuleiro
     iniciaTabuleiro(tabuleiro, mascara);
+
+    //posiciona barcos
+    posicionaBarcos(tabuleiro);
 
     while(estadoDeJogo == 1){
 
@@ -74,14 +116,19 @@ void menuInicial(){
     //Opção escolhida pelo usuário
     int opcao = 0;
 
+    //gerar numeros aleatorios
+    srand( (unsigned)time(NULL));
+
     //Enquanto o jogador não digita uma opcao válida, mostra o menu novamente
     while(opcao < 1 || opcao > 3){
         limpaTela();
+
+
+
         cout << "Bem vindo ao Jogo";
         cout << "\n1 - Jogar Sozinho";
-        cout << "\n2 - Jogar em Dupla";
-        cout << "\n3 - Sobre";
-        cout << "\n4 - Sair";
+        cout << "\n2 - Sobre";
+        cout << "\n3 - Sair";
         cout << "\nEscolha uma opcao e tecle ENTER:";
 
         //Faz a leitura da opcao
@@ -98,13 +145,6 @@ void menuInicial(){
                 }*/
                 break;
             case 2:
-                cout << "Jogar em dupla"<<endl;
-                /*Inicia o jogo
-                if(jogar(2) == 1){
-                    menuInicial();
-                }*/
-                break;
-            case 3:
                 /*Mostra informacoes do Jogo
                 cout << "Informacoes do jogo";
                 limpaTela();
@@ -117,7 +157,7 @@ void menuInicial(){
                 }*/
 
                 break;
-            case 4:
+            case 3:
                 cout << "Ate mais!";
                 break;
         }
