@@ -165,11 +165,22 @@ void jogo(string nomeDoJogador){
         cout<<"\nPontos: "<<pontos<<" - Tentativas restantes: "<<maxTentativas - tentativas<<endl;
         cout<<"\n"<<mensagem<<endl;
 
-        cout<<"\n"<<nomeDoJogador<<" - Digite uma linha: ";
-        cin>>linhaJogada;
+        //verificação de dados
+        linhaJogada = -1;
+        colunaJogada = -1;
 
-        cout<<"\n"<<nomeDoJogador<<" - Digite uma coluna: ";
-        cin>>colunaJogada;
+        //validação simples
+        while((linhaJogada < 0 || colunaJogada < 0) || (linhaJogada > 9 || colunaJogada > 9)){
+
+            cout<<"\n"<<nomeDoJogador<<" - Digite uma linha: ";
+            cin>>linhaJogada;
+
+            cout<<"\n"<<nomeDoJogador<<" - Digite uma coluna: ";
+            cin>>colunaJogada;
+
+        }
+
+
 
         verificaTiro(tabuleiro,linhaJogada,colunaJogada, &pontos, &mensagem);
 
