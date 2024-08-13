@@ -96,7 +96,8 @@ void jogo(){
 
     ///Variaveis Gerais
     char tabuleiro[10][10],mascara[10][10];
-    int linha, coluna, linhaJogada, colunaJogada, estadoDeJogo = 1, pontos = 0;
+    int linha, coluna, linhaJogada, colunaJogada, estadoDeJogo = 1;
+    int tentativas, maxTentativas = 6, pontos = 0;
     string mensagem = "Bem Vindo ao Jogo";
 
     //inicia o tabuleiro
@@ -105,14 +106,14 @@ void jogo(){
     //posiciona barcos
     posicionaBarcos(tabuleiro);
 
-    while(estadoDeJogo == 1){
+    while(tentativas < maxTentativas){
 
         limpaTela();
 
         //exibe o tabuleiro
         exibeTabuleiro(tabuleiro,mascara);
 
-        cout<<"\nPontos: "<<pontos<<endl;
+        cout<<"\nPontos: "<<pontos<<" - Tentativas restantes: "<<maxTentativas - tentativas<<endl;
         cout<<"\n"<<mensagem<<endl;
 
         cout<<"\nDigite uma linha: ";
@@ -126,6 +127,7 @@ void jogo(){
         //revela oque esta no tabuleiro
         mascara[linhaJogada][colunaJogada] = tabuleiro[linhaJogada][colunaJogada];
 
+        tentativas++;
     }
 
 }
