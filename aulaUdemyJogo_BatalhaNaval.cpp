@@ -10,6 +10,9 @@ using namespace std;
 void limpaTela(){
     system("CLS");
 }
+
+void menuInicial();
+
 void iniciaTabuleiro(char tabuleiro[10][10],char mascara[10][10]){
 
     int linha, coluna;
@@ -97,7 +100,7 @@ void jogo(){
     ///Variaveis Gerais
     char tabuleiro[10][10],mascara[10][10];
     int linha, coluna, linhaJogada, colunaJogada, estadoDeJogo = 1;
-    int tentativas, maxTentativas = 6, pontos = 0;
+    int tentativas, maxTentativas = 6, pontos = 0, opcaoDeReinicio;
     string mensagem = "Bem Vindo ao Jogo";
 
     //inicia o tabuleiro
@@ -128,6 +131,24 @@ void jogo(){
         mascara[linhaJogada][colunaJogada] = tabuleiro[linhaJogada][colunaJogada];
 
         tentativas++;
+    }
+
+    cout<< "\nFim de jogo, oque deseja fazer?";
+    cout << "\n1 - Jogar Novamente";
+    cout << "\n2 - Sobre";
+    cout << "\n3 - Sair";
+    cout << "\nEscolha uma opcao e tecle ENTER:";
+    cin>>opcaoDeReinicio;
+
+    switch(opcaoDeReinicio){
+    case 1:
+        jogo();
+        break;
+    case 2:
+        menuInicial();
+        break;
+    case 3:
+        break;
     }
 
 }
