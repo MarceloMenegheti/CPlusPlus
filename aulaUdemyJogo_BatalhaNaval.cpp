@@ -95,7 +95,7 @@ void verificaTiro(char tabuleiro[10][10],int linhaJogada ,int colunaJogada, int 
         }
 }
 
-void jogo(){
+void jogo(string nomeDoJogador){
 
     ///Variaveis Gerais
     char tabuleiro[10][10],mascara[10][10];
@@ -119,10 +119,10 @@ void jogo(){
         cout<<"\nPontos: "<<pontos<<" - Tentativas restantes: "<<maxTentativas - tentativas<<endl;
         cout<<"\n"<<mensagem<<endl;
 
-        cout<<"\nDigite uma linha: ";
+        cout<<"\n"<<nomeDoJogador<<" - Digite uma linha: ";
         cin>>linhaJogada;
 
-        cout<<"Digite uma coluna: ";
+        cout<<"\n"<<nomeDoJogador<<" - Digite uma coluna: ";
         cin>>colunaJogada;
 
         verificaTiro(tabuleiro,linhaJogada,colunaJogada, &pontos, &mensagem);
@@ -141,14 +141,14 @@ void jogo(){
     cin>>opcaoDeReinicio;
 
     switch(opcaoDeReinicio){
-    case 1:
-        jogo();
-        break;
-    case 2:
-        menuInicial();
-        break;
-    case 3:
-        break;
+        case 1:
+            jogo(nomeDoJogador);
+            break;
+        case 2:
+            menuInicial();
+            break;
+        case 3:
+            break;
     }
 
 }
@@ -159,14 +159,12 @@ void menuInicial(){
     //Opção escolhida pelo usuário
     int opcao = 0;
 
-    //gerar numeros aleatorios
-    srand( (unsigned)time(NULL));
+    string nomeDoJogador;
 
     //Enquanto o jogador não digita uma opcao válida, mostra o menu novamente
     while(opcao < 1 || opcao > 3){
+
         limpaTela();
-
-
 
         cout << "Bem vindo ao Jogo";
         cout << "\n1 - Jogar Sozinho";
@@ -180,25 +178,14 @@ void menuInicial(){
         //Faz algo de acordo com a opcao escolhida
         switch(opcao){
             case 1:
-                cout << "Jogo iniciado"<<endl;
-                jogo();
-                //Inicia o jogo
-                /*if(jogar(1) == 1){
-                    menuInicial();
-                }*/
+                cout << "Qual e o seu nome? "<<endl;
+                cin>>nomeDoJogador;
+                jogo(nomeDoJogador);
+
                 break;
             case 2:
-                /*Mostra informacoes do Jogo
+                //Mostra informacoes do Jogo
                 cout << "Informacoes do jogo";
-                limpaTela();
-                cout << "Jogo desenvolvido por Joao em 2017";
-                cout << "\n1 - Voltar";
-                cout << "\n2 - Sair";
-                cin >> opcao;
-                if(opcao == 1){
-                    menuInicial();
-                }*/
-
                 break;
             case 3:
                 cout << "Ate mais!";
