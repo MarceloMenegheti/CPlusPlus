@@ -51,6 +51,13 @@ void exibeMapa(){
 
 void exibeTabuleiro(char tabuleiro[10][10],char mascara[10][10], bool mostraGabarito){
 
+    //Add cor
+    char blue[] = { 0x1b, '[', '1', ';', '3', '4', 'm', 0 };
+    char green[] = { 0x1b, '[', '1', ';', '3', '2', 'm', 0 };
+    char normal[] = { 0x1b, '[', '1', ';', '3', '9', 'm', 0 };
+
+    //printando a cor
+    //cout<<blue;
 
     //Exibe o tabuleiro
     int linha, coluna;
@@ -58,7 +65,17 @@ void exibeTabuleiro(char tabuleiro[10][10],char mascara[10][10], bool mostraGaba
     for(linha = 0; linha < 10; linha++){
             cout<<linha<<" - ";
         for(coluna = 0; coluna < 10; coluna++){
-            cout<<" "<<mascara[linha][coluna];
+            switch(mascara[linha][coluna]){
+                case 'A':
+                    cout<<blue<<" "<<mascara[linha][coluna]<<normal;
+                    break;
+                case 'P':
+                    cout<<green<<" "<<mascara[linha][coluna]<<normal;
+                    break;
+                default:
+                    cout<<" "<<mascara[linha][coluna];
+                    break;
+            }
         }
         cout<<endl;
     }
