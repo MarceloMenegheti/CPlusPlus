@@ -28,25 +28,50 @@ void iniciaTabuleiro(char tabuleiro[10][10],char mascara[10][10]){
 
 }
 
-void exibeTabuleiro(char tabuleiro[10][10],char mascara[10][10]){
+void exibeMapa(){
 
-    int linha, coluna;
+    //mapa indicador de numeros da coluna
+    for(int j = 0; j < 10; j++){
+        if(j == 0){
+            cout<<"     ";
+        }
+        cout<<j<<" ";
+    }
+    cout<<endl;
+
+    //mapa indicador de " | " nas colunas
+    for(int j = 0; j < 10; j++){
+        if(j == 0){
+            cout<<"     ";
+        }
+        cout<<"| ";
+    }
+    cout<<endl;
+}
+
+void exibeTabuleiro(char tabuleiro[10][10],char mascara[10][10], bool mostraGabarito){
+
 
     //Exibe o tabuleiro
+    int linha, coluna;
+
     for(linha = 0; linha < 10; linha++){
+            cout<<linha<<" - ";
         for(coluna = 0; coluna < 10; coluna++){
             cout<<" "<<mascara[linha][coluna];
         }
         cout<<endl;
     }
-    //Exibe o tabuleiro
-    for(linha = 0; linha < 10; linha++){
-        for(coluna = 0; coluna < 10; coluna++){
-            cout<<" "<<tabuleiro[linha][coluna];
-        }
-        cout<<endl;
-    }
 
+    //Exibe o tabuleiro
+    if(mostraGabarito){
+        for(linha = 0; linha < 10; linha++){
+            for(coluna = 0; coluna < 10; coluna++){
+                cout<<" "<<tabuleiro[linha][coluna];
+            }
+            cout<<endl;
+        }
+    }
 }
 
 void posicionaBarcos(char tabuleiro[10][10]){
@@ -102,6 +127,7 @@ void jogo(string nomeDoJogador){
     int linha, coluna, linhaJogada, colunaJogada, estadoDeJogo = 1;
     int tentativas, maxTentativas = 6, pontos = 0, opcaoDeReinicio;
     string mensagem = "Bem Vindo ao Jogo";
+    bool mostraGabarito;
 
     //inicia o tabuleiro
     iniciaTabuleiro(tabuleiro, mascara);
@@ -113,8 +139,11 @@ void jogo(string nomeDoJogador){
 
         limpaTela();
 
+        //exibe o mapa
+        exibeMapa();
+
         //exibe o tabuleiro
-        exibeTabuleiro(tabuleiro,mascara);
+        exibeTabuleiro(tabuleiro,mascara, false);
 
         cout<<"\nPontos: "<<pontos<<" - Tentativas restantes: "<<maxTentativas - tentativas<<endl;
         cout<<"\n"<<mensagem<<endl;
