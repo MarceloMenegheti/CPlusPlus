@@ -12,6 +12,48 @@ void limpaTela(){
     system("CLS");
 }
 
+void iniciaTabuleiro(char tabuleiro[3][3]){
+
+    //Navega por cada posição do tabuleiro e coloca o símbolo de '-'
+    int linha,coluna;
+    for(linha = 0; linha < 3; linha++){
+        for(coluna = 0; coluna < 3; coluna++){
+            tabuleiro[linha][coluna] = '-';
+        }
+    }
+
+}
+
+void exibeTabuleiro (char tabuleiro[3][3]){
+
+     //Exibe o tabuleiro com suas linhas e colunas quebrando a linha ao sair de um for
+    int linha,coluna;
+    cout << "\n";
+    for(linha = 0; linha < 3; linha++){
+        for(coluna = 0; coluna < 3; coluna++){
+            cout << tabuleiro[linha][coluna];
+        }
+        cout << "\n";
+    }
+
+}
+
+void jogo(string nomeDoJogadorUm, string nomeDoJogadorDois, int pontuacaoJogadorUm, int pontuacaoJogadorDois){
+
+    ///Variáveis Gerais
+    //string nomeDoJogadorAtual;//Nomes dos jogadores
+    char tabuleiro[3][3];                                       //Tabuleiro do Jogo
+    int linha,coluna;                                           //Auxiliares para tabuleiro
+
+    //Coloca os '-' no tabuleiro para indicar o vazio
+    iniciaTabuleiro(tabuleiro);
+
+
+    //Exibe o tabuleiro na tela
+    exibeTabuleiro(tabuleiro);
+
+}
+
 void menuInicial(){
 
     //Opção escolhida pelo usuário
@@ -41,7 +83,7 @@ void menuInicial(){
                 cin >> nomeDoJogadorUm;
                 cout << "Digite o nome do jogador 2:";
                 cin >> nomeDoJogadorDois;
-                //jogo(nomeDoJogadorUm, nomeDoJogadorDois,0,0);
+                jogo(nomeDoJogadorUm, nomeDoJogadorDois,0,0);
                 break;
             case 2:
                 //Mostra informacoes do Jogo
