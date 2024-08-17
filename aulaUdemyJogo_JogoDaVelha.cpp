@@ -44,6 +44,9 @@ void jogo(string nomeDoJogadorUm, string nomeDoJogadorDois, int pontuacaoJogador
     //string nomeDoJogadorAtual;//Nomes dos jogadores
     char tabuleiro[3][3];                                       //Tabuleiro do Jogo
     int linha,coluna;                                           //Auxiliares para tabuleiro
+    int linhaJogada,colunaJogada,posicaoJogada;                 //Posição em que o jogador posiciona sua marca
+    int estadoDeJogo = 1;                                       //0 = Sem jogo,1 = Em Jogo
+    int turnoDoJogador = 1;                                     //1 = X, 2 = O
 
     //Coloca os '-' no tabuleiro para indicar o vazio
     iniciaTabuleiro(tabuleiro);
@@ -52,6 +55,30 @@ void jogo(string nomeDoJogadorUm, string nomeDoJogadorDois, int pontuacaoJogador
     //Exibe o tabuleiro na tela
     exibeTabuleiro(tabuleiro);
 
+    while(rodada < 9 && estadoDeJogo == 1){
+
+        limpaTela();
+
+        cout << "\nRodada:" << rodada << "\n";
+        cout << "Pontuacao:" << nomeDoJogadorUm << " " << pontuacaoJogadorUm << " x " << pontuacaoJogadorDois << " " << nomeDoJogadorDois;
+
+        //Exibe o tabuleiro na tela
+        exibeTabuleiro(tabuleiro);
+
+        //Exibe qual numero corresponde a qual posicao
+        exibeInstrucoes();
+
+
+        //Atualiza o nome do jogador atual
+        if(turnoDoJogador == 1){
+
+            nomeDoJogadorAtual = nomeDoJogadorUm;
+
+        }else{
+
+            nomeDoJogadorAtual = nomeDoJogadorDois;
+
+        }
 }
 
 void menuInicial(){
