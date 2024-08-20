@@ -38,6 +38,62 @@ void exibeTabuleiro (char tabuleiro[3][3]){
 
 }
 
+
+//1 = X venceu, 2 = O venceu, 0 = Nada Aconteceu
+int confereTabuleiro(char tabuleiro[3][3]){
+
+        int linha, coluna;
+
+        //Confere linhas
+        for(linha = 0; linha < 3; linha++){
+            if(tabuleiro[linha][0] == 'X' && tabuleiro[linha][0] == tabuleiro[linha][1] && tabuleiro[linha][1] == tabuleiro[linha][2]){
+                return 1;
+            }else if(tabuleiro[linha][0] == 'O' && tabuleiro[linha][0] == tabuleiro[linha][1] && tabuleiro[linha][1] == tabuleiro[linha][2]){
+                return 2;
+            }
+        }
+
+        //Confere Colunas
+        for(coluna = 0; coluna < 3; coluna++){
+            if(tabuleiro[0][coluna] == 'X' && tabuleiro[0][coluna] == tabuleiro[1][coluna] && tabuleiro[1][coluna] == tabuleiro[2][coluna]){
+                return 1;
+            }else if(tabuleiro[0][coluna] == 'O' && tabuleiro[0][coluna] == tabuleiro[1][coluna] && tabuleiro[1][coluna] == tabuleiro[2][coluna]){
+                return 2;
+            }
+        }
+
+        //Diagonal Principal
+        if(tabuleiro[0][0] != '-' && tabuleiro[0][0] == tabuleiro[1][1] && tabuleiro[1][1] == tabuleiro[2][2]){
+
+            if(tabuleiro[0][0] == 'X'){
+               return 1;
+            }else{
+               return 2;
+            }
+        }
+
+        //Diagonal Secundária
+        if(tabuleiro[0][2] != '-' && tabuleiro[0][2] == tabuleiro[1][1] && tabuleiro[1][1] == tabuleiro[2][0]){
+
+            if(tabuleiro[0][2] == 'X'){
+                return 1;
+            }else{
+               return 2;
+            }
+        }
+
+        return 0;
+}
+
+void exibeInstrucoes(){
+
+    cout << "\nMapa de Posicoes:";
+    cout << "\n 7 | 8 | 9";
+    cout << "\n 4 | 5 | 6";
+    cout << "\n 1 | 2 | 3";
+
+}
+
 void jogo(string nomeDoJogadorUm, string nomeDoJogadorDois, int pontuacaoJogadorUm, int pontuacaoJogadorDois){
 
     ///Variáveis Gerais
