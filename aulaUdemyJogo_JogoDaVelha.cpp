@@ -38,7 +38,6 @@ void exibeTabuleiro (char tabuleiro[3][3]){
 
 }
 
-
 //1 = X venceu, 2 = O venceu, 0 = Nada Aconteceu
 int confereTabuleiro(char tabuleiro[3][3]){
 
@@ -84,6 +83,7 @@ int confereTabuleiro(char tabuleiro[3][3]){
 
         return 0;
 }
+
 
 void exibeInstrucoes(){
 
