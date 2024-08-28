@@ -2,29 +2,45 @@
 
 using namespace std;
 
-class Pessoa{           //Definicão de "molde" para Pessoas;
-    public:             //modificador de acesso
-        int idade = 0;  //Atributo de idade
-        string nome;    //Atributo de nome
-        float salario;  //Atributo do salario
+class Calculadora{                  //Definicão de "molde" para Pessoas;
+    public:                         //modificador de acesso
 
         //Método Contrutor é inicializado do quando a classe é criado
-        Pessoa(string nomeNovo, int idadeNova, float salarioNovo){
-            nome = nomeNovo;
-            idade = idadeNova;
-            salario = salarioNovo;
+        Calculadora(){
+            printf("\nCalculadora criada (24 | 8)\n");
         }
 
-        //Método que imprimi os detales atribuidos aos campos
-        void imprimiDetalhes(){
-            cout << "Nome: " << nome << ", Idade: "<< idade;
-            cout << ", Salario: " << salario <<endl;
+        //Método que faz uma soma
+        int soma(int x, int y){
+            int resulatado = x + y;
+            return resulatado;
+        }
+
+        //Método que faz uma subtracao
+        int subtrai(int x, int y){
+            int resulatado = x - y;
+            return resulatado;
+        }
+
+        //Método que faz uma divisao
+        int divisao(int x, int y){
+            int resulatado = x / y;
+            return resulatado;
+        }
+
+        //Método que faz uma multiplicacao
+        int multiplicacao(int x, int y){
+            int resulatado = x * y;
+            return resulatado;
         }
 };
 
 int main(){
-    Pessoa pessoa1("Luiz", 25, 1344.60);    //Instancia um obj da classe pessoa passando um parametro
-    pessoa1.imprimiDetalhes();
+    Calculadora minhaCalculadora;    //Instancia um obj da classe pessoa passando um parametro
+    cout << "Soma: " << minhaCalculadora.soma(24, 8)<<endl;
+    cout << "Subtrai: " << minhaCalculadora.subtrai(24, 8)<<endl;
+    cout << "Divide: " << minhaCalculadora.divisao(24, 8)<<endl;
+    cout << "Multiplica: " << minhaCalculadora.multiplicacao(24, 8)<<endl;
 
     return 0;
 }
