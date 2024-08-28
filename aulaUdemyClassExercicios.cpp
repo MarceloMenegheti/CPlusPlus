@@ -2,32 +2,25 @@
 
 using namespace std;
 
-class Pessoa{           //Definicão de "molde" para Pessoas;
-    public:             //modificador de acesso
-        string nome;    //Atributo de nome
+class Calculadora{                  //Definicão de "molde" para Pessoas;
+    public:                         //modificador de acesso
 
         //Método Contrutor é inicializado do quando a classe é criado
-        Pessoa(string nomeNovo){
-            printf("\nPessoa criada com nome \n");
-            nome = nomeNovo;
+        Calculadora(){
+            printf("\nCalculadora criada \n");
         }
 
-        //Método que imprimi uma frase na tela
-        void fala(string frase){
-            cout<<nome<<" diz: "<<frase;
-        }
-
-        //Método que faz a pessoa gritar
-        void gritar(){
-            cout<< " AAAHHH"<<endl;
+        //Método que faz uma soma
+        int soma(int x, int y){
+            int resulatado = x + y;
+            return resulatado;
         }
 };
 
 int main(){
-    Pessoa pessoa("Marcelo");                              //Instancia um obj da classe pessoa passando um parametro
-
-    pessoa.fala("E ai galera!");
-    pessoa.gritar();
+    Calculadora minhaCalculadora;    //Instancia um obj da classe pessoa passando um parametro
+    cout << minhaCalculadora.soma(24, 8)<<endl;
+    cout << minhaCalculadora.soma(13, 82)<<endl;
 
     return 0;
 }
