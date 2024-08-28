@@ -6,7 +6,12 @@ class Pessoa{           //Definicão de "molde" para Pessoas;
     private:            //modificador de acesso
         string name;    //Atributo de nome
 
-    public:
+    public:             //modificador de acesso
+        //Método Construtor com parametros
+        Pessoa(string nameNew){
+            name = nameNew;
+        }
+
         //Getter do nome, retorna o nome atual
         string getName(){
             return name;
@@ -17,11 +22,13 @@ class Pessoa{           //Definicão de "molde" para Pessoas;
         }
 };
 
-
 int main(){
-    Pessoa pessoa1;                 //Cria um objeto da classe Pessoa
-    pessoa1.setName("Marcelo");     //Modifica o nome
-    cout<<pessoa1.getName()<<endl;  //Exibe o resultado na tela
+
+    Pessoa pessoa1("Marcelo");          //Cria Pessoa com Atributos
+    cout<<pessoa1.getName()<<endl;      //Exibe o nome na tela
+
+    pessoa1.setName("Cristiano");       //Modifica o nome
+    cout<<pessoa1.getName()<<endl;      //Exibe o nome na tela
 
     return 0;
 
