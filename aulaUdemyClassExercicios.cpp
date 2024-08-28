@@ -2,35 +2,32 @@
 
 using namespace std;
 
-class Cachorro{                                     //Definicão de "molde" para Pessoas;
-    public:                                         //modificador de acesso
-        string racaDoCachorro;                      //Atributo raça caso o usuario não tenha escolhido um
+class Pessoa{           //Definicão de "molde" para Pessoas;
+    public:             //modificador de acesso
+        string nome;    //Atributo de nome
 
-        Cachorro(){
-            racaDoCachorro = "Viralata";
+        //Método Contrutor é inicializado do quando a classe é criado
+        Pessoa(string nomeNovo){
+            printf("\nPessoa criada com nome \n");
+            nome = nomeNovo;
         }
 
-        //Método construtor é inicializado quando a classe é criada recebendo o sabor pelo qual usuario escolheu
-        Coxinha(string novaRaca){
-            racaDoCachorro = novaRaca;
+        //Método que imprimi uma frase na tela
+        void fala(string frase){
+            cout<<nome<<" diz: "<<frase;
+        }
+
+        //Método que faz a pessoa gritar
+        void gritar(){
+            cout<< " AAAHHH"<<endl;
         }
 };
 
-
-
 int main(){
+    Pessoa pessoa("Marcelo");                              //Instancia um obj da classe pessoa passando um parametro
 
-    string raca;
-
-    Cachorro cachorro;                              //Instancia um obj da classe Cachorro passando um parametro
-
-    cout<<"Informe o Raca do cachorro: ";           //Pede para ler o raça do cachorro
-
-    getline(cin, cachorro.racaDoCachorro);          //Lê a raça mesmo com espacos
-
-
-    cout<<"Doginho:"<<cachorro.racaDoCachorro<<endl;//Exibe na tela o resultado
-
+    pessoa.fala("E ai galera!");
+    pessoa.gritar();
 
     return 0;
 }
