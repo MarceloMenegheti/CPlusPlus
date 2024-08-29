@@ -2,74 +2,32 @@
 
 using namespace std;
 
-class Celular{          //Definicão de "molde" para Pessoas;
-    private:
-        float price = 0.0;    //Atributo de preço
-        string brand;   //Atributo de Marca
+class Salgadinho{           //Definicão de "molde";
+    private:                //modificador de acesso
+        string sabor;       //Atributo de sabor
 
-    public:             //modificador de acesso
+    public:
         //Método Contrutor é inicializado do quando a classe é criado
-        Celular(){
-            brand = "";
-            price = 0.0;
+        Salgadinho(string sabor){
+            setSabor(sabor);
         }
 
-        Celular(string newBrand){
-            brand = newBrand;
+        //Getter do sabor, retorna o sabor
+        string getSabor(){
+            return sabor;
         }
 
-        Celular(int newPrice){
-            price = newPrice;
-        }
-
-        Celular(string newBrand, float newPrice){
-            brand = newBrand;
-            price = newPrice;
-        }
-
-        //Getter do nome, retorna o nome atual
-        float getPrice(){
-            return price;
-        }
-
-        //Setter do price, atualiza o preço
-        void setPrice(float newPrice){
-            price = newPrice;
-        }
-
-        //Getter do nome, retorna o nome atual
-        string getBrand(){
-            return brand;
-        }
-
-        //Setter do nome, atualiza o nome
-        void setBrand(string newBrand){
-            brand = newBrand;
+        //Setter do sabor, atualiza o sabor
+        void setSabor(string sabor){
+            //atributo da classe recebe o valor do parâmetro
+            this->sabor = sabor;
         }
 };
 
 int main(){
-    Celular celular1;                               //Cria um objeto da classe Celular
-    cout<< "Cell Marca: "<< celular1.getBrand();
-    cout<< ", R$" << celular1.getPrice() <<endl;   //Exibe o resultado na tela
 
-    cout<<"----"<<endl;
-
-    Celular celular2("Motorola");                               //Cria um objeto da classe Celular
-    cout<< "Cell Marca: "<< celular2.getBrand();
-    cout<< ", R$" << celular2.getPrice() <<endl;   //Exibe o resultado na tela
-
-    cout<<"----"<<endl;
-
-    Celular celular3(899.9);                               //Cria um objeto da classe Celular
-    cout<< "Cell Marca: "<< celular3.getBrand();
-    cout<< ", R$" << celular3.getPrice() <<endl;   //Exibe o resultado na tela
-
-    cout<<"----"<<endl;
-
-    Celular celular4("Iphone",4369.99);                               //Cria um objeto da classe Celular
-    cout<< "Cell Marca: "<< celular4.getBrand();
-    cout<< ", R$" << celular4.getPrice() <<endl;   //Exibe o resultado na tela
+    Salgadinho s("Picante");                                         //Cria um objeto da classe Celular
+    cout<< "Salgadinho1 sabor:" << s.getSabor() <<endl;   //Exibe o resultado na tela
 
     return 0;
 }
