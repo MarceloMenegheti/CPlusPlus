@@ -46,3 +46,23 @@ class Celular: public Eletronico {
         }
 };
 
+
+int main(){
+    Eletronico eletronico;
+
+    eletronico.setBrand("Samsung");
+    cout<< "Eletronico marca: "<< eletronico.getBrand();            //Imprimi a marca
+
+    //Não consigo usar os métodos getPolegadas() ou setPolegadas() aqui
+    //Pois esses métodos estão presentes APENAS na classe filha.
+
+    cout<<"\n----";
+
+    Celular celular;
+    celular.setBrand("Iphone");
+    celular.setPolegadas(5);
+
+    cout<<"\nMarca do Celular: "<< celular.getBrand() <<endl;       //imprimi a marca
+    cout<<"Polegadas do Celular: "<< celular.getPolegadas()<<endl;  //imprimi a polegada
+return 0;
+}
