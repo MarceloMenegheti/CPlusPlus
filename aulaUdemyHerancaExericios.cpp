@@ -3,53 +3,34 @@
 using namespace std;
 
 //Classe Pai
-class Animal{
-    protected:
-        string terreno;
-    public:
-        string getTerreno(){
-            return terreno;
-        }
-        void setTerreno(string terreno){
-            this->terreno = terreno;
-        }
-};
-
-//Classe filha
-class Mamifero: public Animal{
+class Usuario{
     private:
-        int mesesGestacao;
+        string name;
+        string email;
+
     public:
-        int getMesesGestacao(){
-            return mesesGestacao;
-        }
-        void setMesesGestacao(int mesesGestacao){
-            this->mesesGestacao = mesesGestacao;
-        }
+        string getName(){return name;}
+        void setName(string name){this->name = name;}
+        string getEmail(){return email;}
+        void setEmail(string email){this->email = email;}
 };
 
 //Classe filha
-class Cachorro : public Mamifero{
+class Personagem : public Usuario{
     //Herda os métodos public e protected
     //de Mamifero e tambem de Animal
     private:
-        string raca;
+        int nivel;
     public:
+        int getNivel(){return nivel;}
+        void setNivel(int nivel){this->nivel = nivel;}
 
-        //um construtor
-        Cachorro(){
-            printf("\nCachorro criado!\n");
-        }
-        string getRaca(){
-            return raca;
-        }
-        string setRaca(string raca){
-            this->raca = raca;
-        }
-
-        //Método para latir
-        void latir(){
-            printf("AUu AUu!");
+        //Métodos diferentes costumam necessitar
+        //De comentários, a menis que o nome seja
+        //Autoexplicativo
+        void aumentaUmNivel(){
+            nivel += 1;
+            printf("Nivel aumentado %d",nivel);
         }
 };
 
@@ -57,20 +38,20 @@ class Cachorro : public Mamifero{
 int main(){
 
 //instanciando o obj cachorro1 da Classe Cachorro
-Cachorro cachorro1;
+Personagem personagem1;
 
 //passando os valores
-cachorro1.setTerreno("Terra");
-cachorro1.setMesesGestacao(4);
-cachorro1.setRaca("Yorkshine");
+personagem1.setName("Marcelo");
+personagem1.setEmail("Mcelo@gmail.com");
+personagem1.setNivel(30);
 
 //imprimindo os valores
-cout<<cachorro1.getTerreno()<<endl;
-cout<<cachorro1.getMesesGestacao()<<endl;
-cout<<cachorro1.getRaca()<<endl;
+cout<<"Nome de usuario: " <<personagem1.getName()<<endl;
+cout<<"Email: " <<personagem1.getEmail()<<endl;
+cout<<"Nivel atual: " <<personagem1.getNivel()<<endl;
 
 //chamando o método
-cachorro1.latir();
+personagem1.aumentaUmNivel();
 
 return 0;
 }
