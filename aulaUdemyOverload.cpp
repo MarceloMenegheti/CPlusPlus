@@ -2,28 +2,28 @@
 
 using namespace std;
 
-class Impressora{
+class Calculadora{
     public:
-        void imprimir(float reais){
-            cout<<"R$:"<<reais<<endl;
+        int soma(int x,int y){
+            return x + y;
         }
 
         //Sobrecarga - Overload
-        void imprimir(string frase){
-            cout<<" - "<<frase<<endl;
+        int soma(int x,int y,int z){
+            return x + y + z;
         }
 };
 
 
 int main(){
 
-    Impressora impressora1;
+    Calculadora calc;
 
     //Irá chamar cada função imprimir de acordo com
     //O tipo e a ordem dos pârametros chamados
 
-    impressora1.imprimir("Oi Galera!!");
-    impressora1.imprimir(3.01);
+    cout<<"soma: "<<calc.soma(1 , 8)<<endl;
+    cout<<"soma: "<<calc.soma(1 , 8, 35)<<endl;
 
 return 0;
 }
