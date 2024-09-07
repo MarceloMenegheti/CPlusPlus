@@ -3,52 +3,49 @@
 using namespace std;
 
 //Classe Pai
-class Idioma{
+class Menu{
     public:
         //Método Virtual (Vazio)
-        void saudar(){}
+        void mostrarOpcoes(){}
 };
 
-class Ingles: public Idioma{
+class MenuADM: public Menu{
     public:
         //Ao chamar saudar() num ingles
         //Esse é o método que será chamado
-        void suadar(){
-            cout<< "Ingles: Hello my friend!"<<endl;
+        void mostrarOpcoes(){
+            cout<< "\n------ Menu Administrador"<<endl;
+            cout<< "1 - Comprar"<<endl;
+            cout<< "2 - Vender"<<endl;
+            cout<< "3 - Cadastrar novo Produto"<<endl;
+            cout<< "4 - Excluir Produto"<<endl;
+            cout<< "5 - Estoque"<<endl;
+            cout<< "6 - sair"<<endl;
         }
 };
 
-class Espanhol: public Idioma{
+class MenuClient: public Menu{
     public:
         //Ao chamar emitirSom() num gato
         //Esse é o método que será chamado
-        void suadar(){
-            cout<< "Espanhol: Hola mi amigo"<<endl;
+        void mostrarOpcoes(){
+            cout<< "\n------ Menu Cliente!!"<<endl;
+            cout<< "1 - Cadastrar-se"<<endl;
+            cout<< "2 - Comprar"<<endl;
+            cout<< "3 - Vender"<<endl;
+            cout<< "4 - Produtos"<<endl;
+            cout<< "5 - sair"<<endl;
         }
 };
 
-class Japones: public Idioma{
-    public:
-        //Ao chamar emitirSom() num gato
-        //Esse é o método que será chamado
-        void suadar(){
-            cout<< "Japones: Kon'nichiwa, tomoyo"<<endl;
-        }
-};
 
 int main(){
 
-    //O Método emitirSom() sobrepôe do Animal
-    Ingles ingles1;
-    ingles1.suadar();
+    MenuClient menuClient;
+    menuClient.mostrarOpcoes();
 
-    //O Método emitirSom() sobrepôe do Animal
-    Espanhol espanhol_1;
-    espanhol_1.suadar();
-
-    //O Método emitirSom() sobrepôe do Animal
-    Japones japones1;
-    japones1.suadar();
+    MenuADM menuADM;
+    menuADM.mostrarOpcoes();
 
     return 0;
 }
