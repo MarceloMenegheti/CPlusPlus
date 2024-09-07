@@ -3,39 +3,52 @@
 using namespace std;
 
 //Classe Pai
-class Animal{
+class Idioma{
     public:
         //Método Virtual (Vazio)
-        void emitirSom(){}
+        void saudar(){}
 };
 
-class Cachorro: public Animal{
+class Ingles: public Idioma{
     public:
-        //Ao chamar emitirSom() num Cachorro
+        //Ao chamar saudar() num ingles
         //Esse é o método que será chamado
-        void emitirSom(){
-            cout<< "Au Au!"<<endl;
+        void suadar(){
+            cout<< "Ingles: Hello my friend!"<<endl;
         }
 };
 
-class Gato: public Animal{
+class Espanhol: public Idioma{
     public:
         //Ao chamar emitirSom() num gato
         //Esse é o método que será chamado
-        void emitirSom(){
-            cout<< "Miau Miau!"<<endl;
+        void suadar(){
+            cout<< "Espanhol: Hola mi amigo"<<endl;
+        }
+};
+
+class Japones: public Idioma{
+    public:
+        //Ao chamar emitirSom() num gato
+        //Esse é o método que será chamado
+        void suadar(){
+            cout<< "Japones: Kon'nichiwa, tomoyo"<<endl;
         }
 };
 
 int main(){
 
     //O Método emitirSom() sobrepôe do Animal
-    Cachorro dog;
-    dog.emitirSom();
+    Ingles ingles1;
+    ingles1.suadar();
 
     //O Método emitirSom() sobrepôe do Animal
-    Gato cat;
-    cat.emitirSom();
+    Espanhol espanhol_1;
+    espanhol_1.suadar();
+
+    //O Método emitirSom() sobrepôe do Animal
+    Japones japones1;
+    japones1.suadar();
 
     return 0;
 }
