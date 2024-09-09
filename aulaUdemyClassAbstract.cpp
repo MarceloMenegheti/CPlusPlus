@@ -2,54 +2,39 @@
 
 using namespace std;
 
-class FormaGeometrica{
+class Funcionario{
     public:
-        virtual int Area() = 0; //Funçao Virtual = será sobrescrita
-
-        //Funtion to set Largura
-        void setLargura(int largura){
-            this->largura = largura;
-        }
-
-        void setAltura(int altura){
-            this->altura = altura;
-        }
-
-    protected:
-        int largura;
-        int altura;
+        virtual void ImprimirFuncoes() = 0; //Funçao Virtual = será sobrescrita
 };
 
-class Retangulo : public FormaGeometrica{
+class Promotor : public Funcionario{
     public:
         //Sobrescreve a Area() de FormaGeometrica
-        int Area(){
-            return (largura * altura);
+        void ImprimirFuncoes(){
+            cout<< "Funcoes Promotor: "<<endl;
+            cout<< "Oganizar Produtos nas Prateleiras"<<endl;
         }
 };
 
 //Triangulo é uma FormaGeometrica
-class Triangulo : public FormaGeometrica{
+class Caixa : public Funcionario{
     public:
         //Sobrescreve a Area() de FormaGeometrica
-        int Area(){
-            return (largura * altura)/2;
+        void ImprimirFuncoes(){
+            cout<< "Funcoes Caixa: "<<endl;
+            cout<< "Passar Produtos no Leitor e";
+            cout<< " Cobrar com a Maquina de Cartao"<<endl;
         }
 };
 
 int main(){
 
-    Retangulo retangulo1;
-    Triangulo triangulo1;
+    Promotor p1;
+    Caixa c1;
 
-    retangulo1.setLargura(5);
-    retangulo1.setAltura(10);
-
-    triangulo1.setLargura(5);
-    triangulo1.setAltura(10);
-
-    cout<<"Area do retangulo: "<< retangulo1.Area() <<endl;
-    cout<<"Area do triangulo: "<< triangulo1.Area() <<endl;
+    p1.ImprimirFuncoes();
+    cout<<endl;
+    c1.ImprimirFuncoes();
 
 return 0;
 }
