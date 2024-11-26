@@ -42,3 +42,4 @@ Execute a aplicação :D
 
 # Autor
 Marcelo Eduardo Menegheti
+![POO](https://github.com/user-attachments/assets/2721d311-1036-450a-89b1-41a2d5260ef4)
